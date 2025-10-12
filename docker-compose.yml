@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  turtlebot3:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    container_name: turtlebot3_obstacle_avoidance
+    volumes:
+      - ./ros2_ws:/root/ros2_ws
+    environment:
+      - DISPLAY=${DISPLAY}
+      - ROS_DOMAIN_ID=30
+      - TURTLEBOT3_MODEL=burger
+    network_mode: host
+    stdin_open: true
+    tty: true
+    privileged: true
