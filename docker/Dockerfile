@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-gazebo-ros-pkgs \
     ros-${ROS_DISTRO}-turtlebot3 \
     ros-${ROS_DISTRO}-turtlebot3-simulations \
+    x11-xserver-utils \  
     && rm -rf /var/lib/apt/lists/*
 
 # Set up workspace
