@@ -11,11 +11,12 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
-# Include directories
-include_directories(include)
-
 # Add executable
 add_executable(obstacle_avoidance src/obstacle_avoidance.cpp)
+target_include_directories(obstacle_avoidance PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
 ament_target_dependencies(obstacle_avoidance
   rclcpp
   sensor_msgs
