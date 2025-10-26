@@ -11,6 +11,9 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
+# Include directories
+include_directories(include)
+
 # Add executable
 add_executable(obstacle_avoidance src/obstacle_avoidance.cpp)
 ament_target_dependencies(obstacle_avoidance
@@ -25,9 +28,17 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 
+# Install include directory
+install(DIRECTORY include/
+  DESTINATION include
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+# Export include directories for downstream packages
+ament_export_include_directories(include)
 
 ament_package()
