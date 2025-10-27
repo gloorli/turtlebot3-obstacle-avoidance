@@ -19,10 +19,20 @@ ament_target_dependencies(obstacle_avoidance
   geometry_msgs
 )
 
+# Include directories
+target_include_directories(
+  obstacle_avoidance PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
 # Install targets
 install(TARGETS
   obstacle_avoidance
   DESTINATION lib/${PROJECT_NAME}
+)
+
+# Install headers
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION include/${PROJECT_NAME}
 )
 
 if(BUILD_TESTING)
